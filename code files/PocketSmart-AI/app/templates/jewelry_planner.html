@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-header-card">
+    <h1><i class="fa-solid fa-gem"></i> Jewelry Budget Planner</h1>
+    <p>Get AI-powered jewelry recommendations within your budget for any occasion with optional outfit image matching.</p>
+  </div>
+
+  <div class="form-card">
+    <form id="jewelryForm" enctype="multipart/form-data">
+      <div class="form-section-title">
+        <i class="fa-solid fa-indian-rupee-sign"></i> Budget Details
+      </div>
+      <div class="form-group">
+        <label for="totalBudget">Total Budget (₹)</label>
+        <input type="number" id="totalBudget" name="budget" class="form-control" placeholder="e.g. 25000" min="500" value="25000" required>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-sparkles"></i> Occasion & Style Preferences
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="occasion">Occasion</label>
+          <input type="text" id="occasion" name="occasion" class="form-control" placeholder="e.g. Wedding, Cocktail Party, Festival, Birthday" value="Wedding Reception" required>
+        </div>
+        <div class="form-group">
+          <label for="styleSelect">Style Preference</label>
+          <select id="styleSelect" name="style" class="form-control">
+            <option value="Traditional Elegance (Kundan/Polki)" selected>Traditional Elegance (Kundan/Polki)</option>
+            <option value="Modern Minimalist">Modern Minimalist</option>
+            <option value="Contemporary Diamond & Rose Gold">Contemporary Diamond & Rose Gold</option>
+            <option value="Statement Bohemian / Oxidised Silver">Statement Bohemian / Oxidised Silver</option>
+            <option value="Classic Pearl & Gold">Classic Pearl & Gold</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-camera"></i> Upload Outfit Image (Optional)
+      </div>
+      <div class="form-group">
+        <div class="image-dropzone" id="dropzone">
+          <i class="fa-solid fa-cloud-arrow-up" style="font-size: 36px; color: var(--primary); margin-bottom: 10px;"></i>
+          <p style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">Click or drag and drop outfit photo here</p>
+          <p style="font-size: 12px; color: var(--text-muted);">Supports PNG, JPG, JPEG, WebP (Max 5MB)</p>
+          <input type="file" id="outfitImageInput" name="outfit" accept="image/png, image/jpeg, image/webp, image/jpg" style="display: none;">
+        </div>
+
+        <div class="image-preview-container" id="imagePreviewWrap">
+          <img id="imagePreview" src="" alt="Outfit preview">
+          <div style="margin-top: 10px;">
+            <button type="button" class="btn btn-secondary" id="removeImageBtn" style="padding: 6px 16px; font-size: 13px;">
+              <i class="fa-solid fa-trash" style="color: #ef4444;"></i> Remove Image
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full" id="submitJewelryBtn" style="padding: 16px; font-size: 16px;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Get Recommendations
+      </button>
+    </form>
+    <div id="jewelryError" class="error-banner"></div>
+  </div>
+
+  <div id="result"></div>
+</div>
+{% endblock %}

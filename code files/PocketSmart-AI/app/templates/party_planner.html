@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-header-card">
+    <h1><i class="fa-solid fa-champagne-glasses"></i> Party Budget Planner</h1>
+    <p>Plan your perfect event with smart budget allocations across catering, decor, entertainment, and venues.</p>
+  </div>
+
+  <div class="form-card">
+    <form id="partyForm">
+      <div class="form-section-title">
+        <i class="fa-solid fa-indian-rupee-sign"></i> Basic Information
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="totalBudget">Total Budget (₹)</label>
+          <input type="number" id="totalBudget" name="total_budget" class="form-control" placeholder="e.g. 35000" min="1000" value="35000" required>
+        </div>
+        <div class="form-group">
+          <label for="numGuests"><i class="fa-solid fa-users"></i> Number of Guests</label>
+          <input type="number" id="numGuests" name="num_guests" class="form-control" min="2" value="25" required>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-calendar-check"></i> Event Details
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="partyType">Party Type</label>
+          <select id="partyType" name="party_type" class="form-control">
+            <option value="Birthday" selected>Birthday Party</option>
+            <option value="Wedding / Reception">Wedding / Reception</option>
+            <option value="Corporate Event">Corporate Event</option>
+            <option value="Anniversary">Anniversary Celebration</option>
+            <option value="Casual Gathering">Casual Friends Gathering</option>
+            <option value="Festival Party">Festival / Holiday Party</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="venueType">Venue Type</label>
+          <select id="venueType" name="venue_type" class="form-control">
+            <option value="Home" selected>Home / Private Residence</option>
+            <option value="Banquet Hall">Banquet Hall</option>
+            <option value="Outdoor / Lawn">Outdoor Garden / Lawn</option>
+            <option value="Restaurant / Hotel">Restaurant / Hotel Private Dining</option>
+            <option value="Resort / Farmhouse">Resort / Farmhouse</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-list-check"></i> Party Needs
+      </div>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="needs_catering" value="true" checked> <i class="fa-solid fa-utensils" style="color: #ea580c;"></i> Catering & Food
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="needs_decoration" value="true" checked> <i class="fa-solid fa-wand-magic-sparkles" style="color: #2563eb;"></i> Decoration & Theme
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="needs_entertainment" value="true" checked> <i class="fa-solid fa-music" style="color: #f59e0b;"></i> Entertainment & Games
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-circle-info"></i> Additional Requirements
+      </div>
+      <div class="form-group">
+        <label for="additionalRequirements">Special Requests, Themes, Dietary Restrictions</label>
+        <textarea id="additionalRequirements" name="additional_requirements" class="form-control" rows="3" placeholder="e.g. Golden balloon theme, vegetarian appetizers, DJ sound system playlist..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full" id="submitPartyBtn" style="padding: 16px; font-size: 16px;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Budget Plan
+      </button>
+    </form>
+    <div id="partyError" class="error-banner"></div>
+  </div>
+
+  <div id="result"></div>
+</div>
+{% endblock %}

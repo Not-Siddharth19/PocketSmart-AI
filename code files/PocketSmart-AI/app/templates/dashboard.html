@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="dashboard-hero">
+  <div>
+    <h1 id="welcomeUser">Welcome, {% if user %}{{ user.username }}{% else %}Explorer{% endif %}!</h1>
+    <p>Choose a budget planner to get started with your personalized financial planning experience.</p>
+  </div>
+  <div>
+    <a class="btn btn-outline-white" href="/history"><i class="fa-solid fa-clock-rotate-left"></i> View History</a>
+  </div>
+</section>
+
+<section class="planner-grid">
+  <div class="planner-card">
+    <div class="card-image-wrap">
+      <img src="/static/images/home_card.jpg" alt="Home Planner">
+      <div class="card-badge"><i class="fa-solid fa-couch"></i> Home</div>
+    </div>
+    <div class="card-body">
+      <h3>Home Budget Planner</h3>
+      <p>Plan your interior design budget efficiently with AI-powered recommendations for furniture, lighting, and more.</p>
+      <a class="btn btn-primary btn-full" href="/planner/home">Get Started</a>
+    </div>
+  </div>
+
+  <div class="planner-card">
+    <div class="card-image-wrap">
+      <img src="/static/images/party_card.jpg" alt="Party Planner">
+      <div class="card-badge"><i class="fa-solid fa-champagne-glasses"></i> Party</div>
+    </div>
+    <div class="card-body">
+      <h3>Party Budget Planner</h3>
+      <p>Plan your perfect event with smart budget allocations for venue, catering, decorations, and entertainment.</p>
+      <a class="btn btn-primary btn-full" href="/planner/party">Get Started</a>
+    </div>
+  </div>
+
+  <div class="planner-card">
+    <div class="card-image-wrap">
+      <img src="/static/images/jewelry_card.jpg" alt="Jewelry Planner">
+      <div class="card-badge"><i class="fa-solid fa-gem"></i> Jewelry</div>
+    </div>
+    <div class="card-body">
+      <h3>Jewelry Budget Planner</h3>
+      <p>Find the ideal jewelry pieces for any occasion that match your outfit and stay within your budget.</p>
+      <a class="btn btn-primary btn-full" href="/planner/jewelry">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<div style="text-align: center; margin: 20px 0 40px;">
+  <a class="btn btn-secondary" href="/history" style="padding: 14px 36px; font-size: 15px; border-radius: var(--radius-full);">
+    <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i> View All Recommendation History
+  </a>
+</div>
+
+<div class="activity-card">
+  <div class="activity-header">
+    <h3><i class="fa-solid fa-bolt" style="color: var(--accent-gold);"></i> Recent Activity</h3>
+    <a href="/history" style="font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600;">See all</a>
+  </div>
+  <div class="activity-list" id="dashboardRecentActivity">
+    <div style="text-align: center; color: var(--text-muted); padding: 20px;">
+      <i class="fa-solid fa-spinner fa-spin"></i> Loading recent activity...
+    </div>
+  </div>
+</div>
+{% endblock %}

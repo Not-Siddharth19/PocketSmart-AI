@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="planner-layout" style="max-width: 1140px;">
+  <div class="planner-header-card" style="text-align: center; padding: 36px 20px;">
+    <h1><i class="fa-solid fa-clock-rotate-left"></i> Your Recommendation History</h1>
+    <p>View, compare, and manage all your previously generated AI budget plans and shopping recommendations.</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+    <div style="display: flex; gap: 8px;" id="historyFilterButtons">
+      <button class="btn btn-primary" data-filter="all" style="padding: 8px 18px; font-size: 13px; border-radius: var(--radius-full);">All Plans</button>
+      <button class="btn btn-secondary" data-filter="home" style="padding: 8px 18px; font-size: 13px; border-radius: var(--radius-full);"><i class="fa-solid fa-couch"></i> Home</button>
+      <button class="btn btn-secondary" data-filter="party" style="padding: 8px 18px; font-size: 13px; border-radius: var(--radius-full);"><i class="fa-solid fa-champagne-glasses"></i> Party</button>
+      <button class="btn btn-secondary" data-filter="jewelry" style="padding: 8px 18px; font-size: 13px; border-radius: var(--radius-full);"><i class="fa-solid fa-gem"></i> Jewelry</button>
+    </div>
+    <div style="font-size: 14px; color: var(--text-muted);" id="historyCountText">Loading plans...</div>
+  </div>
+
+  <div id="historyList" class="history-grid">
+    <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: var(--text-muted);">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size: 28px;"></i>
+      <p style="margin-top: 12px;">Fetching your recommendation history...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Recommendation Details Modal -->
+<div class="modal-backdrop" id="detailModal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModalBtn">&times;</button>
+    <div id="modalBody">
+      <!-- Injected by JavaScript -->
+    </div>
+  </div>
+</div>
+{% endblock %}

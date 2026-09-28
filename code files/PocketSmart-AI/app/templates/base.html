@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketSmart AI - AI-Powered Budget & Recommendation Assistant</title>
+  <meta name="description" content="Manage budgets across home interiors, party planning, and jewelry with GenAI-powered recommendations from Amazon, Flipkart, IKEA, Swiggy, Zomato, and more.">
+  <script>
+    // Immediately apply saved theme and accent to prevent flash of unstyled theme
+    (function() {
+      try {
+        var theme = localStorage.getItem('pocketsmart_theme') || 'system';
+        var accent = localStorage.getItem('pocketsmart_accent') || 'blue';
+        var effectiveTheme = theme;
+        if (theme === 'system') {
+          effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', effectiveTheme);
+        document.documentElement.setAttribute('data-theme-setting', theme);
+        document.documentElement.setAttribute('data-accent', accent);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="nav-container">
+      <a class="brand-logo" href="/">
+        <div class="logo-icon"><i class="fa-solid fa-wallet"></i></div>
+        <span>PocketSmart</span>
+        <span class="ai-tag">AI</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <!-- Dynamic links based on auth state -->
+        <a class="nav-link" href="/" id="navHome"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-link" href="/dashboard" id="navDashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+        <a class="nav-link" href="/planner/home" id="navHomePlanner"><i class="fa-solid fa-couch"></i> Home Planner</a>
+        <a class="nav-link" href="/planner/party" id="navPartyPlanner"><i class="fa-solid fa-champagne-glasses"></i> Party Planner</a>
+        <a class="nav-link" href="/planner/jewelry" id="navJewelryPlanner"><i class="fa-solid fa-gem"></i> Jewelry Planner</a>
+        <a class="nav-link" href="/history" id="navHistory"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+        <a class="nav-link" href="/settings" id="navSettings"><i class="fa-solid fa-gear"></i> Settings</a>
+        
+        <a class="btn-nav-primary" href="/login" id="navAuthBtn">Sign In</a>
+        <button class="nav-link btn-logout" id="logoutBtn" style="display: none;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>PocketSmart AI</h3>
+        <p>AI-powered budget planning tool to help you make smarter financial decisions across every aspect of your life.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/planner/home">Home Planner</a></li>
+          <li><a href="/planner/party">Party Planner</a></li>
+          <li><a href="/planner/jewelry">Jewelry Planner</a></li>
+          <li><a href="/history">Recommendation History</a></li>
+          <li><a href="/settings">Preferences & Settings</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/#features">About Us</a></li>
+          <li><a href="/#testimonials">Testimonials</a></li>
+          <li><a href="/">Our Vision</a></li>
+          <li><a href="/settings">Theme & Customization</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Platforms</h4>
+        <ul>
+          <li><a href="#">Amazon & Flipkart</a></li>
+          <li><a href="#">IKEA & Pepperfry</a></li>
+          <li><a href="#">Swiggy & Zomato</a></li>
+          <li><a href="#">Tanishq & CaratLane</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PocketSmart AI. All rights reserved. Built with FastAPI & Google Gemini 1.5/2.5 Flash.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

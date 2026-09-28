@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="settings-page-wrapper">
+  <!-- Settings Header Banner -->
+  <div class="settings-hero">
+    <div class="settings-hero-content">
+      <div class="settings-hero-title">
+        <div class="settings-icon-badge">
+          <i class="fa-solid fa-sliders"></i>
+        </div>
+        <div>
+          <h1>Preferences & Settings</h1>
+          <p>Customize your dark theme, currency, AI assistant preferences, and account security.</p>
+        </div>
+      </div>
+      <div class="user-pill-tag" id="settingsUserTag">
+        <i class="fa-solid fa-circle-user"></i>
+        <span id="settingsUsername">Loading profile...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-layout">
+    <!-- Settings Navigation Sidebar -->
+    <aside class="settings-sidebar">
+      <nav class="settings-nav-menu">
+        <button class="settings-tab-btn active" data-tab="appearance">
+          <i class="fa-solid fa-palette"></i>
+          <span>Appearance & Theme</span>
+        </button>
+        <button class="settings-tab-btn" data-tab="currency">
+          <i class="fa-solid fa-coins"></i>
+          <span>Currency & Regional</span>
+        </button>
+        <button class="settings-tab-btn" data-tab="ai-providers">
+          <i class="fa-solid fa-microchip"></i>
+          <span>AI & Shopping Stores</span>
+        </button>
+        <button class="settings-tab-btn" data-tab="security">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Account & Security</span>
+        </button>
+        <button class="settings-tab-btn" data-tab="data-privacy">
+          <i class="fa-solid fa-database"></i>
+          <span>Data & History</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Settings Content Area -->
+    <section class="settings-content-area">
+
+      <!-- ================= 1. APPEARANCE & THEME TAB ================= -->
+      <div class="settings-section active" id="tab-appearance">
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <div class="card-header-icon theme-bg"><i class="fa-solid fa-circle-half-stroke"></i></div>
+            <div>
+              <h2>Theme & Color Mode</h2>
+              <p>Choose how PocketSmart AI looks. Dark mode is optimized for low-light comfort.</p>
+            </div>
+          </div>
+          
+          <div class="settings-card-body">
+            <label class="settings-label">Interface Theme</label>
+            <div class="theme-picker-grid">
+              <!-- Dark Theme Option -->
+              <div class="theme-card" data-theme-val="dark" id="themeOptDark">
+                <div class="theme-card-preview dark-preview">
+                  <div class="mock-nav"></div>
+                  <div class="mock-card">
+                    <div class="mock-line title"></div>
+                    <div class="mock-line"></div>
+                  </div>
+                </div>
+                <div class="theme-card-info">
+                  <div class="theme-card-title"><i class="fa-solid fa-moon"></i> Dark Theme</div>
+                  <p>Sleek high-contrast dark aesthetic</p>
+                </div>
+                <div class="theme-check-icon"><i class="fa-solid fa-check"></i></div>
+              </div>
+
+              <!-- Light Theme Option -->
+              <div class="theme-card" data-theme-val="light" id="themeOptLight">
+                <div class="theme-card-preview light-preview">
+                  <div class="mock-nav"></div>
+                  <div class="mock-card">
+                    <div class="mock-line title"></div>
+                    <div class="mock-line"></div>
+                  </div>
+                </div>
+                <div class="theme-card-info">
+                  <div class="theme-card-title"><i class="fa-solid fa-sun"></i> Light Theme</div>
+                  <p>Clean and crisp daylight layout</p>
+                </div>
+                <div class="theme-check-icon"><i class="fa-solid fa-check"></i></div>
+              </div>
+
+              <!-- System Theme Option -->
+              <div class="theme-card" data-theme-val="system" id="themeOptSystem">
+                <div class="theme-card-preview system-preview">
+                  <div class="mock-split-dark"></div>
+                  <div class="mock-split-light"></div>
+                </div>
+                <div class="theme-card-info">
+                  <div class="theme-card-title"><i class="fa-solid fa-laptop"></i> System Sync</div>
+                  <p>Follows your device OS preferences</p>
+                </div>
+                <div class="theme-check-icon"><i class="fa-solid fa-check"></i></div>
+              </div>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <!-- Accent Color Selection -->
+            <label class="settings-label">Accent Color Theme</label>
+            <div class="accent-palette-grid">
+              <button class="accent-btn active" data-accent-val="blue" title="Sapphire Blue">
+                <span class="accent-dot" style="background: #2563eb;"></span>
+                <span class="accent-name">Sapphire</span>
+              </button>
+              <button class="accent-btn" data-accent-val="purple" title="Amethyst Purple">
+                <span class="accent-dot" style="background: #7c3aed;"></span>
+                <span class="accent-name">Amethyst</span>
+              </button>
+              <button class="accent-btn" data-accent-val="emerald" title="Emerald Green">
+                <span class="accent-dot" style="background: #059669;"></span>
+                <span class="accent-name">Emerald</span>
+              </button>
+              <button class="accent-btn" data-accent-val="amber" title="Golden Sunset">
+                <span class="accent-dot" style="background: #d97706;"></span>
+                <span class="accent-name">Sunset</span>
+              </button>
+              <button class="accent-btn" data-accent-val="rose" title="Rose Quartz">
+                <span class="accent-dot" style="background: #e11d48;"></span>
+                <span class="accent-name">Rose</span>
+              </button>
+              <button class="accent-btn" data-accent-val="cyan" title="Cyber Cyan">
+                <span class="accent-dot" style="background: #0284c7;"></span>
+                <span class="accent-name">Cyan</span>
+              </button>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <!-- Display Toggles -->
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Reduced Animations</div>
+                <div class="setting-desc">Minimize transition and pulse effects for lower CPU usage.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="reduceMotionToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Compact Card View</div>
+                <div class="setting-desc">Condense spacing across budget cards and recommendation tables.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="compactModeToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <!-- Live Theme Preview Box -->
+            <div class="theme-live-preview-box">
+              <div class="preview-box-header">
+                <span class="preview-badge"><i class="fa-solid fa-eye"></i> Live Theme Preview</span>
+                <span class="alloc-badge">Buffer: ₹12,500</span>
+              </div>
+              <div class="preview-box-content">
+                <h4>Sample AI Budget Recommendation Card</h4>
+                <p>This is a live reflection of your active theme, background contrast, text hierarchy, and selected accent color.</p>
+                <div class="preview-pills">
+                  <span class="query-chip"><i class="fa-solid fa-couch"></i> Living Room</span>
+                  <span class="query-chip"><i class="fa-solid fa-cart-shopping"></i> Amazon & IKEA</span>
+                  <button class="btn btn-primary" style="padding: 6px 14px; font-size: 13px;">Action Button</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2. CURRENCY & REGIONAL TAB ================= -->
+      <div class="settings-section" id="tab-currency">
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <div class="card-header-icon currency-bg"><i class="fa-solid fa-coins"></i></div>
+            <div>
+              <h2>Currency & Regional Formatting</h2>
+              <p>Configure how budget values, price symbols, and number separators appear.</p>
+            </div>
+          </div>
+
+          <div class="settings-card-body">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="settings-label" for="settingCurrency">Primary Currency</label>
+                <select class="settings-select" id="settingCurrency">
+                  <option value="INR" data-symbol="₹">INR (₹) - Indian Rupee</option>
+                  <option value="USD" data-symbol="$">USD ($) - US Dollar</option>
+                  <option value="EUR" data-symbol="€">EUR (€) - Euro</option>
+                  <option value="GBP" data-symbol="£">GBP (£) - British Pound</option>
+                  <option value="AED" data-symbol="AED">AED (د.إ) - UAE Dirham</option>
+                  <option value="CAD" data-symbol="CA$">CAD ($) - Canadian Dollar</option>
+                  <option value="AUD" data-symbol="AU$">AUD ($) - Australian Dollar</option>
+                </select>
+                <span class="form-helper-text">Applies currency symbols across Home, Party, and Jewelry planners.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="settings-label" for="settingNumberFormat">Number Formatting</label>
+                <select class="settings-select" id="settingNumberFormat">
+                  <option value="lakhs">Indian Format (₹ 1,50,000)</option>
+                  <option value="standard">Standard International ($ 150,000)</option>
+                </select>
+                <span class="form-helper-text">Controls comma placement in budget breakdowns.</span>
+              </div>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="settings-label" for="settingDefaultBudget">Default Budget Preset</label>
+                <input type="number" class="settings-input" id="settingDefaultBudget" value="50000" min="1000" step="5000">
+                <span class="form-helper-text">Prefills the budget input on new planning forms.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="settings-label" for="settingBufferPercent">Default Buffer Reserve (%)</label>
+                <select class="settings-select" id="settingBufferPercent">
+                  <option value="5">5% Reserve Buffer</option>
+                  <option value="10" selected>10% Smart Buffer (Recommended)</option>
+                  <option value="15">15% Conservative Buffer</option>
+                  <option value="20">20% Safe Buffer</option>
+                </select>
+                <span class="form-helper-text">Keeps emergency headroom within recommended budget plans.</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <button class="btn btn-primary" id="saveRegionalBtn">
+                <i class="fa-solid fa-floppy-disk"></i> Save Regional Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 3. AI & SHOPPING PROVIDERS TAB ================= -->
+      <div class="settings-section" id="tab-ai-providers">
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <div class="card-header-icon ai-bg"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div>
+              <h2>AI Assistant & Shopping Stores</h2>
+              <p>Tailor your Gemini AI model parameters and preferred shopping partner links.</p>
+            </div>
+          </div>
+
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label class="settings-label" for="settingAiModel">Preferred Generative AI Engine</label>
+              <select class="settings-select" id="settingAiModel">
+                <option value="gemini-2.5-flash">Google Gemini 2.5 Flash (Fastest & Most Accurate)</option>
+                <option value="gemini-1.5-pro">Google Gemini 1.5 Pro (In-depth Multimodal Reasoning)</option>
+                <option value="auto-fallback">Hybrid Smart Fallback (Recommended)</option>
+              </select>
+              <span class="form-helper-text">Selects the core LLM provider used to curate recommendations.</span>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <label class="settings-label">Preferred Shopping Platforms & Merchants</label>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+              PocketSmart AI will prioritize shopping badges and links from your active platforms:
+            </p>
+
+            <div class="providers-toggle-grid">
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provAmazon" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon amazon"><i class="fa-brands fa-amazon"></i></div>
+                  <div>
+                    <div class="prov-name">Amazon India</div>
+                    <div class="prov-cats">Electronics, Decor, Party</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provFlipkart" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon flipkart"><i class="fa-solid fa-bag-shopping"></i></div>
+                  <div>
+                    <div class="prov-name">Flipkart</div>
+                    <div class="prov-cats">Appliances & Furnishing</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provIkea" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon ikea"><i class="fa-solid fa-couch"></i></div>
+                  <div>
+                    <div class="prov-name">IKEA & Pepperfry</div>
+                    <div class="prov-cats">Furniture & Lighting</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provSwiggy" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon food"><i class="fa-solid fa-utensils"></i></div>
+                  <div>
+                    <div class="prov-name">Swiggy & Zomato</div>
+                    <div class="prov-cats">Food & Party Catering</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provTanishq" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon jewelry"><i class="fa-solid fa-gem"></i></div>
+                  <div>
+                    <div class="prov-name">Tanishq & CaratLane</div>
+                    <div class="prov-cats">Gold & Diamond Jewelry</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="provider-checkbox-card">
+                <input type="checkbox" id="provBluestone" checked>
+                <div class="provider-checkbox-body">
+                  <div class="prov-icon jewelry"><i class="fa-solid fa-ring"></i></div>
+                  <div>
+                    <div class="prov-name">BlueStone & GIVA</div>
+                    <div class="prov-cats">Modern Silver & Gemstones</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Strict Budget Ceiling</div>
+                <div class="setting-desc">Strictly prevent any individual item allocation from exceeding your stated budget total.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="strictBudgetToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Include Visual Styling Tips</div>
+                <div class="setting-desc">Attach complementary color theory, aesthetic themes, and interior decor advice.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="stylingTipsToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <button class="btn btn-primary" id="saveAiSettingsBtn">
+                <i class="fa-solid fa-floppy-disk"></i> Save AI & Store Settings
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 4. ACCOUNT & SECURITY TAB ================= -->
+      <div class="settings-section" id="tab-security">
+        <!-- Account Info Card -->
+        <div class="settings-card" style="margin-bottom: 24px;">
+          <div class="settings-card-header">
+            <div class="card-header-icon security-bg"><i class="fa-solid fa-user-shield"></i></div>
+            <div>
+              <h2>Account Profile</h2>
+              <p>Your PocketSmart AI identity and authentication status.</p>
+            </div>
+          </div>
+
+          <div class="settings-card-body">
+            <div class="account-profile-grid">
+              <div class="account-detail-tile">
+                <span class="tile-label">Username</span>
+                <span class="tile-val" id="profileUsername">-</span>
+              </div>
+              <div class="account-detail-tile">
+                <span class="tile-label">Email Address</span>
+                <span class="tile-val" id="profileEmail">-</span>
+              </div>
+              <div class="account-detail-tile">
+                <span class="tile-label">User ID</span>
+                <span class="tile-val" id="profileUserId">-</span>
+              </div>
+              <div class="account-detail-tile">
+                <span class="tile-label">Member Since</span>
+                <span class="tile-val" id="profileMemberSince">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Change Password Card -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <div class="card-header-icon security-bg"><i class="fa-solid fa-key"></i></div>
+            <div>
+              <h2>Change Password</h2>
+              <p>Keep your account secure with a strong password (minimum 6 characters).</p>
+            </div>
+          </div>
+
+          <div class="settings-card-body">
+            <div class="alert alert-error" id="changePasswordError" style="display: none;"></div>
+            <div class="alert alert-success" id="changePasswordSuccess" style="display: none;"></div>
+
+            <form id="changePasswordForm">
+              <div class="form-group">
+                <label class="settings-label" for="currentPassword">Current Password</label>
+                <input type="password" class="settings-input" id="currentPassword" name="current_password" required placeholder="Enter your current password">
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="settings-label" for="newPassword">New Password</label>
+                  <input type="password" class="settings-input" id="newPassword" name="new_password" required minlength="6" placeholder="At least 6 characters">
+                </div>
+
+                <div class="form-group">
+                  <label class="settings-label" for="confirmNewPassword">Confirm New Password</label>
+                  <input type="password" class="settings-input" id="confirmNewPassword" required minlength="6" placeholder="Re-type new password">
+                </div>
+              </div>
+
+              <div style="margin-top: 16px;">
+                <button type="submit" class="btn btn-primary" id="changePasswordBtn">
+                  <i class="fa-solid fa-lock"></i> Update Password
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 5. DATA & HISTORY MANAGEMENT TAB ================= -->
+      <div class="settings-section" id="tab-data-privacy">
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <div class="card-header-icon data-bg"><i class="fa-solid fa-database"></i></div>
+            <div>
+              <h2>Data Management & Privacy</h2>
+              <p>Export your recommendation history, clear stored data, or restore default configurations.</p>
+            </div>
+          </div>
+
+          <div class="settings-card-body">
+            <!-- Export Section -->
+            <div class="danger-zone-item">
+              <div>
+                <div class="setting-title"><i class="fa-solid fa-file-export" style="color: var(--primary);"></i> Export Budget History</div>
+                <div class="setting-desc">Download a complete backup of all your saved home, party, and jewelry budget plans as JSON.</div>
+              </div>
+              <button class="btn btn-secondary" id="exportHistoryBtn">
+                <i class="fa-solid fa-download"></i> Export Data (JSON)
+              </button>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <!-- Clear History Section -->
+            <div class="danger-zone-item">
+              <div>
+                <div class="setting-title" style="color: #ef4444;"><i class="fa-solid fa-trash-can"></i> Clear All Recommendation History</div>
+                <div class="setting-desc">Permanently erase all generated plans, product allocations, and saved sessions from your account.</div>
+              </div>
+              <button class="btn btn-danger" id="clearHistoryBtn">
+                <i class="fa-solid fa-trash"></i> Clear History
+              </button>
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <!-- Reset Preferences Section -->
+            <div class="danger-zone-item">
+              <div>
+                <div class="setting-title"><i class="fa-solid fa-rotate-left"></i> Reset All Settings to Default</div>
+                <div class="setting-desc">Restore original light/dark theme, currency, accent color, and AI store preferences.</div>
+              </div>
+              <button class="btn btn-outline" id="resetDefaultsBtn">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Reset Defaults
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+{% endblock %}

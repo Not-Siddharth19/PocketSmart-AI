@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-header-card">
+    <h1><i class="fa-solid fa-couch"></i> Home Interior Budget Planner</h1>
+    <p>Create a customized budget plan for your dream home interior with smart product allocations.</p>
+  </div>
+
+  <div class="form-card">
+    <form id="homeForm">
+      <div class="form-section-title">
+        <i class="fa-solid fa-indian-rupee-sign"></i> Budget Details
+      </div>
+      <div class="form-group">
+        <label for="totalBudget">Total Budget (₹)</label>
+        <input type="number" id="totalBudget" name="total_budget" class="form-control" placeholder="e.g. 50000" min="500" value="50000" required>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-lightbulb"></i> Fixtures & Furniture Quantities
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="numLights"><i class="fa-solid fa-lightbulb"></i> Number of Lights / Fixtures</label>
+          <input type="number" id="numLights" name="num_lights" class="form-control" min="1" value="5" required>
+        </div>
+        <div class="form-group">
+          <label for="numFans"><i class="fa-solid fa-fan"></i> Number of Ceiling Fans</label>
+          <input type="number" id="numFans" name="num_fans" class="form-control" min="0" value="4" required>
+        </div>
+        <div class="form-group">
+          <label for="numFurniture"><i class="fa-solid fa-chair"></i> Number of Furniture Pieces</label>
+          <input type="number" id="numFurniture" name="num_furniture" class="form-control" min="1" value="2" required>
+        </div>
+        <div class="form-group">
+          <label for="numDining"><i class="fa-solid fa-utensils"></i> Number of Dining Tables</label>
+          <input type="number" id="numDining" name="num_dining_tables" class="form-control" min="0" value="1" required>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-door-open"></i> Rooms to Include
+      </div>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="rooms" value="Living Room" checked> Living Room
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="rooms" value="Kitchen" checked> Kitchen
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="rooms" value="Bedroom" checked> Bedroom
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="rooms" value="Dining Room"> Dining Room
+          </label>
+        </div>
+      </div>
+
+      <div class="form-section-title">
+        <i class="fa-solid fa-circle-info"></i> Additional Information
+      </div>
+      <div class="form-group">
+        <label for="additionalRequirements">Special Requirements or Style Preferences</label>
+        <textarea id="additionalRequirements" name="additional_requirements" class="form-control" rows="3" placeholder="e.g. Modern minimalist design with warm ambient lighting and space-saving furniture..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full" id="submitHomeBtn" style="padding: 16px; font-size: 16px;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Recommendations
+      </button>
+    </form>
+    <div id="homeError" class="error-banner"></div>
+  </div>
+
+  <div id="result"></div>
+</div>
+{% endblock %}

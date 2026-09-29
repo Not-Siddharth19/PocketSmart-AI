@@ -2,9 +2,9 @@
 
 ### Budget intelligence, with a little more thinking.
 
-**PocketSmart AI** is a Generative AI-powered budget and recommendation assistant that helps users turn a fixed budget into practical, personalized plans.
+**PocketSmart AI** is a Generative AI-powered budget and recommendation assistant that transforms a fixed budget and user requirements into practical, personalized planning recommendations.
 
-Instead of simply asking an AI for suggestions, PocketSmart combines **structured budget calculations + recommendation logic + Generative AI** to produce useful results for real-world planning.
+The project combines **structured budget allocation, recommendation logic and Generative AI** rather than relying entirely on AI-generated answers.
 
 ---
 
@@ -15,107 +15,179 @@ Instead of simply asking an AI for suggestions, PocketSmart combines **structure
 **SmartBridge Project**
 
 **Siddharth — Team Leader**
+
 Sai Prasanna · Monish M · Thameem Ansari K
 
 </div>
 
 ---
 
-## The Idea
+# Project Overview
 
-A budget usually starts with one number.
+A budget starts with a number.
 
-What happens next is the difficult part.
+The difficult part is deciding what that number should actually do.
 
-How much should go where?
-What should be prioritized?
-What can be skipped?
-What would actually fit the budget?
+PocketSmart AI helps users convert a budget into a structured plan for:
 
-**PocketSmart AI turns that single number into a plan.**
+| Planner             | Purpose                                            |
+| ------------------- | -------------------------------------------------- |
+| **Home Interior**   | Plan interior requirements around a defined budget |
+| **Party Planner**   | Allocate spending across event requirements        |
+| **Jewelry Planner** | Generate occasion and style-based recommendations  |
 
-The application currently supports three planning experiences:
-
-| Planner             | Purpose                                                            |
-| ------------------- | ------------------------------------------------------------------ |
-| **Home Interior**   | Plan interior requirements around a defined budget                 |
-| **Party Planner**   | Allocate a budget across event requirements                        |
-| **Jewelry Planner** | Generate jewelry recommendations based on occasion and preferences |
-
-The system first builds a structured recommendation and can then use **Google Gemini** to add a layer of personalized AI insight.
+The application combines local recommendation logic with **Google Gemini** for optional AI-powered enrichment.
 
 ---
 
-## Why PocketSmart?
-
-Most recommendation systems begin with AI.
-
-PocketSmart begins with the **budget**.
+# The Core Idea
 
 ```text
-Your Budget
-     │
-     ▼
-Requirements
-     │
-     ▼
-Budget Allocation
-     │
-     ▼
-Recommendation Engine
-     │
-     ├───────────────┐
-     ▼               ▼
-Local Result      Gemini AI
-     │               │
-     └───────┬───────┘
-             ▼
-      Personalized Plan
+                    USER INPUT
+                        │
+                        ▼
+              Budget + Requirements
+                        │
+                        ▼
+                 Budget Analysis
+                        │
+                        ▼
+             Recommendation Engine
+                    ┌───┴───┐
+                    │       │
+                    ▼       ▼
+                 Local   Gemini AI
+                 Logic   Enrichment
+                    │       │
+                    └───┬───┘
+                        ▼
+               Personalized Plan
+                        │
+                        ▼
+                 Recommendation
+                     History
 ```
 
-This hybrid approach means the application can still produce a useful result even when the external AI service is unavailable.
+The local recommendation layer provides the foundation.
+
+Gemini adds personalization when available.
+
+This means the application can still provide a useful result when the external AI service is unavailable.
 
 ---
 
-# What It Can Do
+# SmartBridge Phase-Wise Development
 
-### Budget Planning
+The complete project follows the eight phases specified for the SmartBridge submission.
 
-Enter a budget and requirements, and PocketSmart generates a structured allocation instead of leaving the user with a blank search page.
-
-### AI Recommendations
-
-Google Gemini can enrich the generated plan with more personalized suggestions.
-
-### Three Planning Modes
-
-**Home Interior**
-
-Plan rooms, requirements and spending priorities.
-
-**Party**
-
-Build an event plan while keeping individual expenses within the available budget.
-
-**Jewelry**
-
-Generate occasion and style-based recommendations, with optional outfit-image analysis.
-
-### Recommendation History
-
-Authenticated users can access previous recommendations instead of starting from zero every time.
-
-### AI Fallback
-
-The application is designed around a local-first recommendation foundation.
-
-If Gemini is unavailable, the application can still return its locally generated result.
+```text
+01 ─ Brainstorming & Ideation
+02 ─ Requirement Analysis
+03 ─ Project Design
+04 ─ Project Planning
+05 ─ Project Development
+06 ─ Project Testing
+07 ─ Project Documentation
+08 ─ Project Demonstration
+```
 
 ---
 
-# Architecture
+# Phase 01 — Brainstorming & Ideation
 
-PocketSmart AI is intentionally modular.
+### Objective
+
+Identify a practical problem that can be addressed using Generative AI and budget-aware recommendation logic.
+
+### Problem Identified
+
+Users often need to plan purchases or events with a limited budget.
+
+Examples include:
+
+* Home interior planning
+* Party and event planning
+* Jewelry selection
+
+Manually comparing requirements, allocating expenses and deciding priorities can be time-consuming.
+
+### Proposed Idea
+
+Create a single application that accepts:
+
+```text
+Budget
++
+Requirements
++
+Preferences
+        ↓
+Structured Recommendations
+        ↓
+AI-Powered Personalization
+```
+
+### Project Objectives
+
+* Simplify budget planning.
+* Generate personalized recommendations.
+* Combine deterministic calculations with Generative AI.
+* Maintain recommendation history.
+* Provide multiple planning categories.
+
+### Output
+
+**PocketSmart AI** was selected as the proposed project.
+
+---
+
+# Phase 02 — Requirement Analysis
+
+## Functional Requirements
+
+The application should provide:
+
+* User registration
+* User login
+* JWT authentication
+* Home Interior Planner
+* Party Planner
+* Jewelry Planner
+* Optional outfit-image upload
+* AI-powered recommendations
+* Local recommendation fallback
+* Recommendation history
+* Provider/search links
+
+## Non-Functional Requirements
+
+The system should provide:
+
+* Responsive UI
+* Modular backend architecture
+* Secure credential handling
+* Environment-based API configuration
+* Graceful AI failure handling
+* Maintainable project structure
+
+## Software Requirements
+
+| Requirement          | Technology                    |
+| -------------------- | ----------------------------- |
+| Programming Language | Python                        |
+| Backend              | FastAPI                       |
+| Frontend             | Jinja2, HTML, CSS, JavaScript |
+| Database             | SQLite                        |
+| ORM                  | SQLAlchemy                    |
+| Authentication       | JWT                           |
+| AI                   | Google Gemini                 |
+| Testing              | Pytest, HTTPX                 |
+
+---
+
+# Phase 03 — Project Design
+
+## System Architecture
 
 ```text
                          ┌──────────────────┐
@@ -133,39 +205,21 @@ PocketSmart AI is intentionally modular.
        Authentication         Planners           History
               │                   │                   │
               ▼                   ▼                   ▼
-             JWT           Budget Logic          SQLite
+             JWT            Budget Logic          SQLite
                                   │
                                   ▼
                            Recommendation
                                   │
-                           ┌──────┴──────┐
-                           ▼             ▼
-                         Local        Gemini
-                         Logic           AI
-                           └──────┬──────┘
+                         ┌────────┴────────┐
+                         ▼                 ▼
+                       Local            Gemini
+                       Logic               AI
+                         └────────┬────────┘
                                   ▼
-                              Final Plan
+                           Final Result
 ```
 
----
-
-# Technology
-
-| Layer          | Technology                       |
-| -------------- | -------------------------------- |
-| Backend        | FastAPI                          |
-| Frontend       | Jinja2, HTML, CSS, JavaScript    |
-| Database       | SQLite                           |
-| ORM            | SQLAlchemy                       |
-| Authentication | JWT                              |
-| AI             | Google Gemini / Google GenAI SDK |
-| Testing        | Pytest, HTTPX                    |
-| Runtime        | Python 3.11+                     |
-| Development    | VS Code / Antigravity            |
-
----
-
-# Project Structure
+## Application Structure
 
 ```text
 PocketSmart-AI/
@@ -190,76 +244,175 @@ PocketSmart-AI/
 └── antigravity.md
 ```
 
----
+## Database Design
 
-# Getting Started
+SQLite is used for local persistence.
 
-## 1. Clone
+The database stores:
 
-```bash
-git clone <your-repository-url>
-cd PocketSmart-AI
-```
+* User accounts
+* Recommendation history
+* User-specific recommendation records
 
-## 2. Create the Virtual Environment
-
-### Windows
-
-```powershell
-py -m venv .venv
-```
-
-If PowerShell blocks `.venv\Scripts\activate`, you **do not need to change the Windows execution policy**.
-
-Run the environment's Python directly instead:
-
-```powershell
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-```
-
-This is also the recommended approach for the project.
+SQLAlchemy provides the database abstraction layer.
 
 ---
 
-## 3. Configure Environment Variables
+# Phase 04 — Project Planning
 
-Create `.env` from the example:
+The development was divided into manageable stages.
 
-```powershell
-Copy-Item .env.example .env
-```
+| Stage | Activity                    |
+| ----- | --------------------------- |
+| 1     | Project ideation            |
+| 2     | Requirement analysis        |
+| 3     | Architecture and UI design  |
+| 4     | Backend setup               |
+| 5     | Database and authentication |
+| 6     | Planner development         |
+| 7     | Gemini integration          |
+| 8     | Frontend integration        |
+| 9     | Testing                     |
+| 10    | Documentation               |
+| 11    | Demonstration               |
 
-Add your Gemini API key if live Gemini integration is required:
+## Team Responsibilities
 
-```env
-GEMINI_API_KEY=your_api_key_here
-```
+### Siddharth — Team Leader
 
-Never commit `.env` or expose your API key publicly.
+Project coordination, architecture, integration and final project management.
+
+### Sai Prasanna — Team Member
+
+Frontend and planner interface development.
+
+### Monish M — Team Member
+
+Backend, API and database development.
+
+### Thameem Ansari K — Team Member
+
+Testing, documentation and demonstration support.
 
 ---
 
-## 4. Install Dependencies
+# Phase 05 — Project Development
 
-```powershell
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-```
+## Frontend
+
+The frontend uses:
+
+* Jinja2
+* HTML
+* CSS
+* JavaScript
+
+It provides:
+
+* Landing page
+* Authentication screens
+* Planner forms
+* Recommendation results
+* Recommendation history
+
+## Backend
+
+FastAPI handles:
+
+* API routing
+* Authentication
+* Planner requests
+* Recommendation processing
+* Database operations
+* AI integration
+
+## Home Interior Planner
+
+Users provide their budget and interior requirements.
+
+The system creates a structured plan based on the available budget.
+
+## Party Planner
+
+Users provide event information and budget details.
+
+The application allocates spending across relevant event requirements.
+
+## Jewelry Planner
+
+Users can provide:
+
+* Budget
+* Occasion
+* Style
+* Preferences
+* Optional outfit image
+
+The system generates recommendations based on the supplied information.
+
+## Generative AI
+
+Google Gemini is used as an optional intelligence layer.
+
+The AI receives structured planning information and generates additional personalized recommendations.
+
+The API key is kept in environment variables rather than being exposed in frontend code.
 
 ---
 
-## 5. Start PocketSmart AI
+# Phase 06 — Project Testing
+
+Testing focuses on validating both individual components and the complete application flow.
+
+## Testing Areas
+
+### Application
+
+* Startup
+* Routing
+* Error handling
+
+### Authentication
+
+* Registration
+* Login
+* JWT authentication
+* Protected routes
+
+### Planners
+
+* Home Interior
+* Party
+* Jewelry
+
+### Validation
+
+* Budget values
+* Required fields
+* Image upload
+* Invalid input
+
+### AI
+
+* Gemini availability
+* Gemini response handling
+* Local fallback
+
+### Database
+
+* User creation
+* Recommendation storage
+* Recommendation history
+
+## Test Command
 
 ```powershell
-.venv\Scripts\python.exe -m uvicorn app.main:app --reload
+.venv\Scripts\python.exe -m pytest -q
 ```
 
-Open the application:
+## API Documentation
 
-```text
-http://127.0.0.1:8000
-```
-
-FastAPI documentation:
+When the application is running:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -267,124 +420,238 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# Testing
+# Phase 07 — Project Documentation
 
-Run the test suite:
+The project documentation contains:
 
-```powershell
-.venv\Scripts\python.exe -m pytest -q
+```text
+Docs/
+│
+├── Project Report
+├── Setup Documentation
+└── Supporting Documents
+
+Phase wise docs/
+│
+├── Phase 01
+├── Phase 02
+├── Phase 03
+├── Phase 04
+├── Phase 05
+├── Phase 06
+├── Phase 07
+└── Phase 08
 ```
 
-Testing covers areas including:
+The repository is maintained phase-wise so the development process can be reviewed from ideation through demonstration.
 
-* Application startup
-* Authentication
-* JWT protection
-* Planner endpoints
-* Budget validation
-* Image upload validation
-* Recommendation history
-* AI fallback behavior
+## GitHub Submission
+
+The project repository is public and contains:
+
+* Application source code
+* Documentation
+* Phase-wise project material
+* README
+* Configuration examples
+
+**Repository:**
+
+`https://github.com/Not-Siddharth19/PocketSmart-AI`
+
+---
+
+# Phase 08 — Project Demonstration
+
+The final demonstration should show the complete application workflow.
+
+## Demonstration Flow
+
+```text
+Introduction
+     ↓
+Project Name
+     ↓
+Team & Team Code
+     ↓
+Problem Statement
+     ↓
+Proposed Solution
+     ↓
+Application Interface
+     ↓
+Planner Demonstration
+     ↓
+Budget Calculation
+     ↓
+AI Recommendation
+     ↓
+History
+     ↓
+Final Output
+```
+
+## Demo Should Explain
+
+* Project name
+* Team code
+* Team members
+* Purpose of the project
+* Problem being solved
+* Uses and benefits
+* Technologies used
+* Working process
+* AI integration
+* Final output
+
+## Demo Video
+
+The demonstration video should include:
+
+* Screen sharing
+* Student voice-over
+* Project explanation
+* Complete working process
+* Final output
+
+The video should be uploaded to Google Drive with appropriate viewing permissions.
+
+---
+
+# Technology Stack
+
+| Layer          | Technology                   |
+| -------------- | ---------------------------- |
+| Language       | Python 3.11+                 |
+| Backend        | FastAPI                      |
+| Frontend       | Jinja2 + HTML/CSS/JavaScript |
+| Database       | SQLite                       |
+| ORM            | SQLAlchemy                   |
+| Authentication | JWT                          |
+| AI             | Google Gemini                |
+| Testing        | Pytest + HTTPX               |
+| Development    | VS Code / Antigravity        |
+
+---
+
+# Getting Started
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/Not-Siddharth19/PocketSmart-AI.git
+cd PocketSmart-AI
+```
+
+## Create Virtual Environment
+
+### Windows
+
+```powershell
+py -m venv .venv
+```
+
+## Install Dependencies
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+## Configure Environment
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Add the Gemini API key when required:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+Never commit `.env`.
+
+## Run
+
+```powershell
+.venv\Scripts\python.exe -m uvicorn app.main:app --reload
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+API documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
 
 ---
 
 # Security
 
-PocketSmart AI keeps configuration and credentials outside the application source code.
-
-### Never commit:
+Never commit:
 
 ```text
 .env
 API keys
 JWT secrets
-private credentials
+Private credentials
 ```
 
-Use:
-
-```text
-.env.example
-```
-
-as the template for required environment variables.
-
----
-
-# SmartBridge Project
-
-PocketSmart AI follows the required **eight-phase SmartBridge project structure**:
-
-```text
-01  Brainstorming & Ideation
-02  Requirement Analysis
-03  Project Design
-04  Project Planning
-05  Project Development
-06  Project Testing
-07  Project Documentation
-08  Project Demonstration
-```
-
-The repository is organized phase-by-phase so that the development process is visible alongside the final application.
-
----
-
-# Team
-
-### `SWTID-2026-3238`
-
-**Siddharth**
-*Team Leader*
-
-**Sai Prasanna**
-*Team Member*
-
-**Monish M**
-*Team Member*
-
-**Thameem Ansari K**
-*Team Member*
+Use `.env.example` as the configuration template.
 
 ---
 
 # Project Workflow
 
 ```text
-INPUT
-  │
-  │  Budget + Requirements
-  ▼
-UNDERSTAND
-  │
-  │  Planner-specific processing
-  ▼
-ALLOCATE
-  │
-  │  Structured budget calculation
-  ▼
-RECOMMEND
-  │
-  ├── Local recommendation
-  │
-  └── Gemini enrichment
-  │
-  ▼
-PRESENT
-  │
-  │  Practical personalized result
-  ▼
-REMEMBER
-     Recommendation History
+                  ┌───────────────┐
+                  │     INPUT     │
+                  │ Budget + Need │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │    ANALYZE    │
+                  │ Requirements │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │    ALLOCATE   │
+                  │ Budget Logic  │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │  RECOMMEND    │
+                  │ Local + Gemini│
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │    PRESENT    │
+                  │ Final Result  │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │    HISTORY    │
+                  │ Saved Result  │
+                  └───────────────┘
 ```
 
 ---
 
 # Roadmap
 
-Potential future improvements include:
+Future development may include:
 
-* More planning categories
+* Additional planning categories
 * Improved recommendation personalization
 * Advanced budget optimization
 * Additional AI providers
@@ -401,22 +668,48 @@ Potential future improvements include:
 > **Don't ask AI to decide the budget.
 > Give AI a budget worth thinking about.**
 
-PocketSmart AI is built around that idea.
-
 A number becomes a plan.
+
 A plan becomes recommendations.
+
 And recommendations become something the user can actually use.
 
 ---
 
-## Project Status
+# Team
+
+## `SWTID-2026-3238`
+
+**Siddharth**
+*Team Leader*
+
+**Sai Prasanna**
+*Team Member*
+
+**Monish M**
+*Team Member*
+
+**Thameem Ansari K**
+*Team Member*
+
+---
+
+# Project Status
 
 **SmartBridge Project — Development / Demonstration**
 
-**Team Code:** `SWTID-2026-3238`
-
 **Project:** `PocketSmart AI`
+
+**Team Code:** `SWTID-2026-3238`
 
 **Team Leader:** `Siddharth`
 
 ---
+
+<div align="center">
+
+**PocketSmart AI**
+
+*Budget intelligence, with a little more thinking.*
+
+</div>
